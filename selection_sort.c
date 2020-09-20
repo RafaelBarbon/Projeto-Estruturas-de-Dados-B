@@ -3,7 +3,7 @@
 #include "selection_sort.h"
 
 void swap(unsigned int V[], int x, int y){
-    int aux = V[x];
+    unsigned int aux = V[x];
     V[x] = V[y];
     V[y] = aux;
 }
