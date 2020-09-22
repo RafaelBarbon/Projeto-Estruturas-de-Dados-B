@@ -8,7 +8,7 @@ void swap_insertion(unsigned int V[], int x, int y){
     V[y] = aux;
 }
 
-void insertion_sort (unsigned int V[], int tam){
+void insertion (unsigned int V[], int tam){
     int i, auxp;
     for (i = 1; i < tam; i++){//Inicia na posição 1, já que a comparação será entre auxp e v[auxp-1]
         auxp = i;// Percorrer o vetor para as posições enteriores de i
@@ -18,3 +18,27 @@ void insertion_sort (unsigned int V[], int tam){
         }
     }
 }
+/*
+int main(){
+    int v[] = {3,67,31,90,1,44,654,89,21,20};
+    
+    for(int i = 0; i < 10; i++)
+        printf("%d ",v[i]);
+    
+    printf("\n\n");
+    
+    insertion(v,10);
+    
+    for(int i = 0; i < 10; i++)
+        printf("%d ",v[i]);
+    
+    return 0;
+}
+*/
+/*
+[8,2,60,20,4]
+[2,8,60,20,4]
+[2,8,60,20,4]
+[2,8,20,60,4]
+[2,4,8,20,60]
+*/
