@@ -2,9 +2,9 @@
 #define MERGE_SORT_H_
 
 // Função que ordena e realiza o merge dos subvetores em um auxiliar e repassa para o vetor principal
-void Merge(unsigned int vet[], int comeco, int meio, int fim)
+void Merge(unsigned int vet[], int comeco, int meio, int fim);
 
 // Função que realiza a divisão (determinação dos intervalos (recursão))
-void Merge_sort(unsigned int vet[], int comeco, int fim)
+void Merge_sort(unsigned int vet[], int comeco, int fim);
 
 #endif
