@@ -1,8 +1,13 @@
 #ifndef SELECTION_SORT_H_ 
 #define SELECTION_SORT_H_
 
+//Realiza a troca entre as posição do vetor 
 void swap_heap(unsigned int v[], int x, int y);
 
-void heap_sort(unsigned int v[], int i, int tam);
+//Função responsável pela ordenação 
+void heap_sort(unsigned int v[], int tam);
+
+//Função reponsável pela flutuação do maior elemento 
+void flutua(unsigned int v[], int i, int tam);
 
 #endif
