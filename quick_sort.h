@@ -5,6 +5,6 @@
 void swap_quick(unsigned int V[], int x, int y);
 
 // Função Quick Sort
-void quick(unsigned int V[], int comeco, int fim);
+void quick_sort(unsigned int V[], int comeco, int fim);
 
 #endif

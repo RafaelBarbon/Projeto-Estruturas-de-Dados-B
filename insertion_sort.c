@@ -8,7 +8,7 @@ void swap_insertion(unsigned int V[], int x, int y){
     V[y] = aux;
 }
 
-void insertion (unsigned int V[], int tam){
+void insertion(unsigned int V[], int tam){
     int i, auxp;
     for (i = 1; i < tam; i++){//Inicia na posição 1, já que a comparação será entre auxp e v[auxp-1]
         auxp = i;// Percorrer o vetor para as posições enteriores de i
