@@ -15,9 +15,8 @@ void heap_sort(unsigned int v[], int tam){
 	
 	for(i = tam-1; i > 0; i--){
 		swap_heap(v, 0, i);//Troca a raiz com  ultima folha do vetor(árvore) (i)
-		flutua(v, 0, (i - 1));//Vai da raiz(posição 0) ate i-1 
+		flutua(v, 0, i);//Vai da raiz(posição 0) ate i
 	}
-	
 }
 
 void flutua(unsigned int v[], int i, int tam){
@@ -38,7 +37,8 @@ void flutua(unsigned int v[], int i, int tam){
 
 /*
 int main(){
-    int v[] = {3,67,31,90,1,44,654,89,21,20};
+    //unsigned int v[] = {3,67,31,90,1,44,654,89,21,20};
+	unsigned int v[] = {65,20,25,68,32,24,21,24,98,80}; // teste realizado apos o make file
     
     for(int i = 0; i < 10; i++)
         printf("%d ",v[i]);
@@ -52,7 +52,7 @@ int main(){
     
     return 0;
 }
-
+*/
 /*
 				3
 		67					31

@@ -1,5 +1,5 @@
-#ifndef SELECTION_SORT_H_ 
-#define SELECTION_SORT_H_
+#ifndef HEAP_SORT_H_ 
+#define HEAP_SORT_H_
 
 //Realiza a troca entre as posição do vetor 
 void swap_heap(unsigned int v[], int x, int y);

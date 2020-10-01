@@ -21,7 +21,7 @@ void selection(unsigned int vet[], int tam){
 
 /*
 int main(){
-    int v[] = {3,67,31,90,1,44,654,89,21,20};
+    unsigned int v[] = {3,67,31,90,1,44,654,89,21,20};
     
     for(int i = 0; i < 10; i++)
         printf("%d ",v[i]);

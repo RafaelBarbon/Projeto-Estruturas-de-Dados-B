@@ -4,16 +4,16 @@
 
 
 void Merge(unsigned int vet[], int comeco, int meio, int fim){
-	int i = comeco, j = meio, k = 0;
+	int i = comeco, j = meio+1, k = 0;
 	unsigned int array[fim+1-comeco]; // vetor auxiliar que tem tamanho de dois subarrays
 
-	while(i < meio && j <= fim){ // Verifica o inicio dos subvetores (já ordenados) e realiza o merge ordenadamente
+	while(i <= meio && j <= fim){ // Verifica o inicio dos subvetores (já ordenados) e realiza o merge ordenadamente
 		if(vet[i] < vet[j])
 			array[k++] = vet[i++]; // Só avança com oq foi manipulado
 		else
 			array[k++] = vet[j++]; // Só avança com oq foi manipulado
 	}
-	while(i < meio)
+	while(i <= meio)
 		array[k++] = vet[i++]; // Só avança com oq foi manipulado
 	while(j <= fim)
 		array[k++] = vet[j++]; // Só avança com oq foi manipulado
@@ -28,12 +28,12 @@ void Merge_sort(unsigned int vet[], int comeco, int fim){
 
 		Merge_sort(vet, comeco, meio); // Primeira metade de subvetores
 		Merge_sort(vet, meio+1, fim); // Segunda metade de subvetores
-		Merge(vet, comeco, meio+1, fim); // Junção dos subvetores
+		Merge(vet, comeco, meio, fim); // Junção dos subvetores
 	}
 }
 /*
 int main(){
-    int v[] = {3,67,31,90,1,44,654,89,21,20};
+    unsigned int v[] = {3,67,31,90,1,44,654,89,21,20};
     
     for(int i = 0; i < 10; i++)
         printf("%d ",v[i]);
