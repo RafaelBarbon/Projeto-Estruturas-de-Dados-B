@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <sys/time.h>
 #include <stdbool.h>
 #include "heap_sort.h"
 #include "insertion_sort.h"
@@ -44,32 +45,48 @@ bool check(unsigned int v[], int tam){
 	return true;
 }
 
+void calcular(struct timeval comeco, struct timeval fim, int *mili,int *seg){
+	*seg = fim.tv_sec - comeco.tv_sec;
+	*mili = fim.tv_usec - comeco.tv_usec; 
+	*mili %= 1000;
+}
+
 int main(){
-    int N, i, cont = 0; 
+    int N, i, /*cont = 0,*/ mili, sec; 
     unsigned int *array = NULL, *aux = NULL;//Vetor original e auxiliar 
+	struct timeval start,end;
     srand(time(NULL));//Capta o horário para criação do número aletório
+
+	printf("\n\tN\t\tSelectionsort\t\tInsertionsort\t\t\t\tMergesort\t\t\tQuicksort\t\t\tHeapsort");
+
     for(N = 10; N <= 1000000; N*=10){
         if(!cria(N, &array)){
-            printf("\n\tErro de alocação do vetor original de %d posicao.", N);
+            printf("\n\tErro de alocacao do vetor original de %d posicao.", N);
             exit(0);
         }
         if(!cria(N, &aux)){
-            printf("\n\tErro de alocação do vetor auxiliar de %d posicao.", N);
+            printf("\n\tErro de alocacao do vetor auxiliar de %d posicao.", N);
             exit(0);
         }
         gera_numeros(array, N);
-
+		printf("\n%7d",N);
 		/*
         printf("\nVetor original:");
         teste(array, N);
-		*/
-        
 		printf("\n\n\ti = %d\n",N);
+		*/
 
         copia(array, aux, N);
+		gettimeofday(&start,NULL);
         selection(aux, N);
+		gettimeofday(&end,NULL);
+		calcular(start,end,&mili,&sec);
         //resultados
-		!check(aux,N) ? printf("\n\tErro no selection sort.") : (printf("\n\tSelection sort OK."),cont++);
+		if(!check(aux,N))
+			exit(0);
+		printf("\t\t%7d s %3d ms",sec,mili);
+
+		//!check(aux,N) ? printf("\n\tErro no selection sort.") : (printf("\n\tSelection sort OK."),cont++);
 
 		/*
         printf("\n\nSelection:");
@@ -78,10 +95,16 @@ int main(){
 
 		
         copia(array, aux, N);//Recupera o valor original
+		gettimeofday(&start,NULL);
         insertion(aux, N);
+		gettimeofday(&end,NULL);
+		calcular(start,end,&mili,&sec);
         //resultados
+		if(!check(aux,N))
+			exit(0);
+		printf("\t\t%7d s %3d ms",sec,mili);
 
-		!check(aux,N) ? printf("\n\tErro no insertion sort.") : (printf("\n\tInsertion sort OK."),cont++);
+		//!check(aux,N) ? printf("\n\tErro no insertion sort.") : (printf("\n\tInsertion sort OK."),cont++);
 		
 
 		/*
@@ -91,10 +114,16 @@ int main(){
 
 		
         copia(array, aux, N);
+		gettimeofday(&start,NULL);
         Merge_sort(aux, 0, N-1);
+		gettimeofday(&end,NULL);
+		calcular(start,end,&mili,&sec);
         //resultados
+		if(!check(aux,N))
+			exit(0);
+		printf("\t\t%7d s %3d ms",sec,mili);
 
-		!check(aux,N) ? printf("\n\tErro no merge sort.") : (printf("\n\tMerge sort OK."),cont++);
+		//!check(aux,N) ? printf("\n\tErro no merge sort.") : (printf("\n\tMerge sort OK."),cont++);
 		
 
 		/*
@@ -104,10 +133,16 @@ int main(){
 
 		
         copia(array, aux, N);
+		gettimeofday(&start,NULL);
         quick_sort(aux, 0,N-1);
+		gettimeofday(&end,NULL);
+		calcular(start,end,&mili,&sec);
         //resultados
+		if(!check(aux,N))
+			exit(0);
+		printf("\t\t%7d s %3d ms",sec,mili);
 
-		!check(aux,N) ? printf("\n\tErro no quick sort.") : (printf("\n\tQuick sort OK."),cont++);
+		//!check(aux,N) ? printf("\n\tErro no quick sort.") : (printf("\n\tQuick sort OK."),cont++);
 		
 
 		/*
@@ -117,20 +152,27 @@ int main(){
 
 		
         copia(array, aux, N);
+		gettimeofday(&start,NULL);
         heap_sort(aux, N);
+		gettimeofday(&end,NULL);
+		calcular(start,end,&mili,&sec);
         //resultados
+		if(!check(aux,N))
+			exit(0);
+		printf("\t\t%7d s %3d ms",sec,mili);
         
-		!check(aux,N) ? printf("\n\tErro no heap sort.") : (printf("\n\tHeap sort OK."),cont++);
+		//!check(aux,N) ? printf("\n\tErro no heap sort.") : (printf("\n\tHeap sort OK."),cont++);
 		
 
 		/*
         printf("\n\nHeap:");
         teste(aux, N);
 		*/
-
+		/*
 		if(cont == 30)
 			printf("\nPrograma funcionando corretamente.\n");
-        
+        */
+
         free(array);
         free(aux);
         array = NULL;
