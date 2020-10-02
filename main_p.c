@@ -21,13 +21,15 @@ bool cria(int N, unsigned int **P){//Recebe tamanho para alocação e a variavel
 // Função que gera número aleatório de zero ao limite máx de unsigned int 
 void gera_numeros(unsigned int v[], int N){
     for(int i = 0; i < N; i++)
-        v[i] = rand()%lim; 
+        v[i] = rand() % lim; // Caso médio (aleatório)
+		//v[i] = i; // Melhor caso
+		//v[i] = N - i; // Pior caso
 }
 
 // Função para teste (Impressão do vetor para verificação dos números aleatórios e ordenação)
 void teste(unsigned int v[], int tam){
     for(int i = 0; i < tam; i++)
-        printf(" %d", v[i]);  
+        printf(" %u", v[i]);  
 }
 
 // Função que copia para o vetor auxiliar
@@ -45,19 +47,23 @@ bool check(unsigned int v[], int tam){
 	return true;
 }
 
-void calcular(struct timeval comeco, struct timeval fim, int *mili,int *seg){
-	*seg = fim.tv_sec - comeco.tv_sec;
+void calcular(struct timeval comeco, struct timeval fim, long int *mili){
+	long int seg;
+	seg = fim.tv_sec - comeco.tv_sec;
+	seg *= 1000;
 	*mili = fim.tv_usec - comeco.tv_usec; 
-	*mili %= 1000;
+	*mili /= 1000;
+	*mili += seg;
 }
 
 int main(){
-    int N, i, /*cont = 0,*/ mili, sec; 
+    int N, i; /*cont = 0,*/ 
+	long int mili; 
     unsigned int *array = NULL, *aux = NULL;//Vetor original e auxiliar 
 	struct timeval start,end;
     srand(time(NULL));//Capta o horário para criação do número aletório
 
-	printf("\n\tN\t\tSelectionsort\t\tInsertionsort\t\t\t\tMergesort\t\t\tQuicksort\t\t\tHeapsort");
+	printf("\n\tN\t\tSelectionsort\t\tInsertionsort\t\tMergesort\t\tQuicksort\t\tHeapsort");
 
     for(N = 10; N <= 1000000; N*=10){
         if(!cria(N, &array)){
@@ -80,11 +86,11 @@ int main(){
 		gettimeofday(&start,NULL);
         selection(aux, N);
 		gettimeofday(&end,NULL);
-		calcular(start,end,&mili,&sec);
+		calcular(start,end,&mili);
         //resultados
 		if(!check(aux,N))
 			exit(0);
-		printf("\t\t%7d s %3d ms",sec,mili);
+		printf("\t\t%10ld ms",mili);
 
 		//!check(aux,N) ? printf("\n\tErro no selection sort.") : (printf("\n\tSelection sort OK."),cont++);
 
@@ -98,11 +104,11 @@ int main(){
 		gettimeofday(&start,NULL);
         insertion(aux, N);
 		gettimeofday(&end,NULL);
-		calcular(start,end,&mili,&sec);
+		calcular(start,end,&mili);
         //resultados
 		if(!check(aux,N))
 			exit(0);
-		printf("\t\t%7d s %3d ms",sec,mili);
+		printf("\t\t%10ld ms",mili);
 
 		//!check(aux,N) ? printf("\n\tErro no insertion sort.") : (printf("\n\tInsertion sort OK."),cont++);
 		
@@ -117,11 +123,11 @@ int main(){
 		gettimeofday(&start,NULL);
         Merge_sort(aux, 0, N-1);
 		gettimeofday(&end,NULL);
-		calcular(start,end,&mili,&sec);
+		calcular(start,end,&mili);
         //resultados
 		if(!check(aux,N))
 			exit(0);
-		printf("\t\t%7d s %3d ms",sec,mili);
+		printf("\t\t%10ld ms",mili);
 
 		//!check(aux,N) ? printf("\n\tErro no merge sort.") : (printf("\n\tMerge sort OK."),cont++);
 		
@@ -136,11 +142,11 @@ int main(){
 		gettimeofday(&start,NULL);
         quick_sort(aux, 0,N-1);
 		gettimeofday(&end,NULL);
-		calcular(start,end,&mili,&sec);
+		calcular(start,end,&mili);
         //resultados
 		if(!check(aux,N))
 			exit(0);
-		printf("\t\t%7d s %3d ms",sec,mili);
+		printf("\t\t%10ld ms",mili);
 
 		//!check(aux,N) ? printf("\n\tErro no quick sort.") : (printf("\n\tQuick sort OK."),cont++);
 		
@@ -155,11 +161,11 @@ int main(){
 		gettimeofday(&start,NULL);
         heap_sort(aux, N);
 		gettimeofday(&end,NULL);
-		calcular(start,end,&mili,&sec);
+		calcular(start,end,&mili);
         //resultados
 		if(!check(aux,N))
 			exit(0);
-		printf("\t\t%7d s %3d ms",sec,mili);
+		printf("\t\t%10ld ms",mili);
         
 		//!check(aux,N) ? printf("\n\tErro no heap sort.") : (printf("\n\tHeap sort OK."),cont++);
 		
