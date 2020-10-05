@@ -14,7 +14,7 @@ Rafael Silva Barbon 							19243633
 #include "merge_sort.h"
 #include "quick_sort.h"
 #include "selection_sort.h"
-#define lim 4294967295 //Limite_do_unsigned_int
+#define lim 4294967296 //Limite_do_unsigned_int
 
 // Função de alocação
 bool cria(int N, unsigned int **P){//Recebe tamanho para alocação e a variavel de alocação do vetor criado 
@@ -53,6 +53,7 @@ bool check(unsigned int v[], int tam){
 	return true;
 }
 
+// Função que calcula o tempo em ms
 void calcular(struct timeval comeco, struct timeval fim, long int *mili){
 	long int seg;
 	seg = fim.tv_sec - comeco.tv_sec;
@@ -80,7 +81,7 @@ int main(){
             printf("\n\tErro de alocacao do vetor auxiliar de %d posicao.", N);
             exit(0);
         }
-        gera_numeros(array, N);
+        gera_numeros(array, N); // atribui valores para o vetor principal
 		printf("\n%7d",N);
 		/*
         printf("\nVetor original:");
@@ -88,11 +89,11 @@ int main(){
 		printf("\n\n\ti = %d\n",N);
 		*/
 
-        copia(array, aux, N);
-		gettimeofday(&start,NULL);
-        selection(aux, N);
-		gettimeofday(&end,NULL);
-		calcular(start,end,&mili);
+        copia(array, aux, N); // copia os valores do vetor principal para o auxiliar
+		gettimeofday(&start,NULL); // início
+        selection(aux, N); // Para selection sort
+		gettimeofday(&end,NULL); // fim
+		calcular(start,end,&mili); // tempo execução = fim - início
         //resultados
 		if(!check(aux,N))
 			exit(0);
@@ -106,11 +107,11 @@ int main(){
 		*/
 
 		
-        copia(array, aux, N);//Recupera o valor original
-		gettimeofday(&start,NULL);
-        insertion(aux, N);
-		gettimeofday(&end,NULL);
-		calcular(start,end,&mili);
+        copia(array, aux, N); // Recupera o valor original do vetor auxiliar
+		gettimeofday(&start,NULL); // início
+        insertion(aux, N); // Para insertion sort
+		gettimeofday(&end,NULL); // fim
+		calcular(start,end,&mili); // tempo execução = fim - início
         //resultados
 		if(!check(aux,N))
 			exit(0);
@@ -125,11 +126,11 @@ int main(){
 		*/
 
 		
-        copia(array, aux, N);
-		gettimeofday(&start,NULL);
-        Merge_sort(aux, 0, N-1);
-		gettimeofday(&end,NULL);
-		calcular(start,end,&mili);
+        copia(array, aux, N); // Recupera o valor original do vetor auxiliar
+		gettimeofday(&start,NULL); // início
+        Merge_sort(aux, 0, N-1); // Para merge sort
+		gettimeofday(&end,NULL); // fim
+		calcular(start,end,&mili); // tempo execução = fim - início
         //resultados
 		if(!check(aux,N))
 			exit(0);
@@ -144,11 +145,11 @@ int main(){
 		*/
 
 		
-        copia(array, aux, N);
-		gettimeofday(&start,NULL);
-        quick_sort(aux, 0,N-1);
-		gettimeofday(&end,NULL);
-		calcular(start,end,&mili);
+        copia(array, aux, N); // Recupera o valor original do vetor auxiliar
+		gettimeofday(&start,NULL); // início
+        quick_sort(aux, 0,N-1); // Para quick sort
+		gettimeofday(&end,NULL); // fim
+		calcular(start,end,&mili); // tempo execução = fim - início
         //resultados
 		if(!check(aux,N))
 			exit(0);
@@ -163,11 +164,11 @@ int main(){
 		*/
 
 		
-        copia(array, aux, N);
-		gettimeofday(&start,NULL);
-        heap_sort(aux, N);
-		gettimeofday(&end,NULL);
-		calcular(start,end,&mili);
+        copia(array, aux, N); // Recupera o valor original do vetor auxiliar
+		gettimeofday(&start,NULL); // início
+        heap_sort(aux, N); // Para heap sort
+		gettimeofday(&end,NULL); // fim
+		calcular(start,end,&mili); // tempo execução = fim - início
         //resultados
 		if(!check(aux,N))
 			exit(0);

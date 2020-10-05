@@ -16,11 +16,11 @@ void swap_selection(unsigned int V[], int x, int y){
 
 void selection(unsigned int vet[], int tam){
     int i, j, menor;
-    for(i=0; i < tam ; i++){
+    for(i=0; i < tam; i++){
         menor = i;
         for(j = i; j < tam; j++ )
             if(vet[j] < vet[menor])
-                menor =  j;
+                menor = j;
         swap_selection(vet, menor, i);
     }   
 }

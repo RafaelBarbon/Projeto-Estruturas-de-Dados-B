@@ -15,7 +15,8 @@ void swap_quick(unsigned int V[], int x, int y){
 } 
 
 void quick_sort(unsigned int V[], int comeco, int fim){
-    int pivo = V[(comeco + fim) / 2], i = comeco, j = fim;
+    unsigned int pivo = V[(comeco + fim) / 2];
+	int i = comeco, j = fim;
     while(i <= j){ //while para percorrer todo o vetor
         while(V[i] < pivo && i < fim) // Caso o elemento da esquerda for maior que o pivo, ele não atualiza o valor
             i++;

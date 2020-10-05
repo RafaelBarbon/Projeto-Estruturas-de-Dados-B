@@ -9,7 +9,7 @@ Rafael Silva Barbon 							19243633
 #include "heap_sort.h"
 
 void swap_heap(unsigned int v[], int x, int y){
-	unsigned aux = v[x];
+	unsigned int aux = v[x];
 	v[x] = v[y];
 	v[y] = aux;
 }
