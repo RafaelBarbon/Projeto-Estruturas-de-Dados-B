@@ -1,3 +1,9 @@
+/*
+Alcides Gomes Beato Neto 						19060987
+Henrique Sartori Siqueira 						19240472
+Rafael Silva Barbon 							19243633
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "heap_sort.h"

@@ -1,3 +1,8 @@
+#Alcides Gomes Beato Neto 						19060987
+#Henrique Sartori Siqueira 						19240472
+#Rafael Silva Barbon 							19243633
+
+
 ## Makefile ##
 all: sort
 
