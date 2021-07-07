@@ -4,7 +4,7 @@ Henrique Sartori Siqueira 						19240472
 Rafael Silva Barbon 							19243633
 */
 
-#ifndef MERGE_SORT_H_ 
+#ifndef MERGE_SORT_H_
 #define MERGE_SORT_H_
 
 // Função que ordena e realiza o merge dos subvetores em um auxiliar e repassa para o vetor principal

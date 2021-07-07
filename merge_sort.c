@@ -40,17 +40,17 @@ void Merge_sort(unsigned int vet[], int comeco, int fim){
 /*
 int main(){
     unsigned int v[] = {3,67,31,90,1,44,654,89,21,20};
-    
+
     for(int i = 0; i < 10; i++)
         printf("%d ",v[i]);
-    
+
     printf("\n\n");
-    
+
     Merge_sort(v,0,9);
-    
+
     for(int i = 0; i < 10; i++)
         printf("%d ",v[i]);
-    
+
     return 0;
 }
 */

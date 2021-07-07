@@ -12,7 +12,7 @@ void swap_quick(unsigned int V[], int x, int y){
     unsigned int aux = V[x]; // Realiza a troca entre os elementos
     V[x] = V[y];
     V[y] = aux;
-} 
+}
 
 void quick_sort(unsigned int V[], int comeco, int fim){
     unsigned int pivo = V[(comeco + fim) / 2];
@@ -24,30 +24,30 @@ void quick_sort(unsigned int V[], int comeco, int fim){
             j--;
 		if(i <= j){ // Verifica se permanece no loop para poder fazer um swap
 			swap_quick(V,i,j); // Realiza o swap e atualiza os valores das posições
-			i++; 
+			i++;
 			j--;
 		}
 	}
     if(i < fim) // Ordena o subvetor da esquerda
        	quick_sort(V, i, fim);
     if(j > comeco) // Ordena o subvetor da direita
-       	quick_sort(V, comeco, j);    
+       	quick_sort(V, comeco, j);
 }
 
 /*
 int main(){
     unsigned int v[] = {3,67,31,90,1,44,654,89,21,20};
-    
+
     for(int i = 0; i < 10; i++)
         printf("%d ",v[i]);
-    
+
     printf("\n\n");
-    
+
     quick_sort(v,0,9);
-    
+
     for(int i = 0; i < 10; i++)
         printf("%d ",v[i]);
-    
+
     return 0;
 }
 */

@@ -17,14 +17,14 @@ Rafael Silva Barbon 							19243633
 #define lim 4294967296 //Limite_do_unsigned_int
 
 // Função de alocação
-bool cria(int N, unsigned int **P){//Recebe tamanho para alocação e a variavel de alocação do vetor criado 
+bool cria(int N, unsigned int **P){//Recebe tamanho para alocação e a variavel de alocação do vetor criado
     (*P) = (unsigned int *)malloc(N * sizeof(unsigned int));
     if(!(*P))//Verifica se a alocação foi realizada com sucesso
         return false;
     return true;
 }
 
-// Função que gera número aleatório de zero ao limite máx de unsigned int 
+// Função que gera número aleatório de zero ao limite máx de unsigned int
 void gera_numeros(unsigned int v[], int N){
     for(int i = 0; i < N; i++)
         v[i] = rand() % lim; // Caso médio (aleatório)
@@ -35,13 +35,13 @@ void gera_numeros(unsigned int v[], int N){
 // Função para teste (Impressão do vetor para verificação dos números aleatórios e ordenação)
 void teste(unsigned int v[], int tam){
     for(int i = 0; i < tam; i++)
-        printf(" %u", v[i]);  
+        printf(" %u", v[i]);
 }
 
 // Função que copia para o vetor auxiliar
 void copia(unsigned int *original, unsigned int *aux, int tam){
      for(int i = 0; i < tam; i++)
-        aux[i] = original[i]; 
+        aux[i] = original[i];
 }
 
 // Função que chega se o vetor encontra-se ordenado
@@ -58,15 +58,15 @@ void calcular(struct timeval comeco, struct timeval fim, long int *mili){
 	long int seg;
 	seg = fim.tv_sec - comeco.tv_sec;
 	seg *= 1000;
-	*mili = fim.tv_usec - comeco.tv_usec; 
+	*mili = fim.tv_usec - comeco.tv_usec;
 	*mili /= 1000;
 	*mili += seg;
 }
 
 int main(){
-    int N, i; /*cont = 0,*/ 
-	long int mili; 
-    unsigned int *array = NULL, *aux = NULL;//Vetor original e auxiliar 
+    int N, i; /*cont = 0,*/
+	long int mili;
+    unsigned int *array = NULL, *aux = NULL;//Vetor original e auxiliar
 	struct timeval start,end;
     srand(time(NULL));//Capta o horário para criação do número aletório
 
@@ -106,7 +106,7 @@ int main(){
         teste(aux, N);
 		*/
 
-		
+
         copia(array, aux, N); // Recupera o valor original do vetor auxiliar
 		gettimeofday(&start,NULL); // início
         insertion(aux, N); // Para insertion sort
@@ -118,14 +118,14 @@ int main(){
 		printf("\t\t%10ld ms",mili);
 
 		//!check(aux,N) ? printf("\n\tErro no insertion sort.") : (printf("\n\tInsertion sort OK."),cont++);
-		
+
 
 		/*
         printf("\n\nInsertion:");
         teste(aux, N);
 		*/
 
-		
+
         copia(array, aux, N); // Recupera o valor original do vetor auxiliar
 		gettimeofday(&start,NULL); // início
         Merge_sort(aux, 0, N-1); // Para merge sort
@@ -137,14 +137,14 @@ int main(){
 		printf("\t\t%10ld ms",mili);
 
 		//!check(aux,N) ? printf("\n\tErro no merge sort.") : (printf("\n\tMerge sort OK."),cont++);
-		
+
 
 		/*
         printf("\n\nMerge:");
         teste(aux, N);
 		*/
 
-		
+
         copia(array, aux, N); // Recupera o valor original do vetor auxiliar
 		gettimeofday(&start,NULL); // início
         quick_sort(aux, 0,N-1); // Para quick sort
@@ -156,14 +156,14 @@ int main(){
 		printf("\t\t%10ld ms",mili);
 
 		//!check(aux,N) ? printf("\n\tErro no quick sort.") : (printf("\n\tQuick sort OK."),cont++);
-		
+
 
 		/*
-        printf("\n\nQuick:");        
+        printf("\n\nQuick:");
         teste(aux, N);
 		*/
 
-		
+
         copia(array, aux, N); // Recupera o valor original do vetor auxiliar
 		gettimeofday(&start,NULL); // início
         heap_sort(aux, N); // Para heap sort
@@ -173,9 +173,9 @@ int main(){
 		if(!check(aux,N))
 			exit(0);
 		printf("\t\t%10ld ms",mili);
-        
+
 		//!check(aux,N) ? printf("\n\tErro no heap sort.") : (printf("\n\tHeap sort OK."),cont++);
-		
+
 
 		/*
         printf("\n\nHeap:");

@@ -18,7 +18,7 @@ void insertion(unsigned int V[], int tam){
     int i, auxp;
     for (i = 1; i < tam; i++){//Inicia na posição 1, já que a comparação será entre auxp e v[auxp-1]
         auxp = i;// Percorrer o vetor para as posições enteriores de i
-        while(V[auxp -1] > V[auxp] && auxp > 0){ //Fazendo o shift dos valores com trocas sucessivas enquanto o de v[auxp] for maior que v[auxp - 1] e auxp > 0 evitando acessos em posições inexistentes 
+        while(V[auxp -1] > V[auxp] && auxp > 0){ //Fazendo o shift dos valores com trocas sucessivas enquanto o de v[auxp] for maior que v[auxp - 1] e auxp > 0 evitando acessos em posições inexistentes
             swap_insertion(V, auxp-1, auxp);
             auxp--;//Vai p posição anterior de auxp
         }
@@ -27,17 +27,17 @@ void insertion(unsigned int V[], int tam){
 /*
 int main(){
     unsigned int v[] = {3,67,31,90,1,44,654,89,21,20};
-    
+
     for(int i = 0; i < 10; i++)
         printf("%d ",v[i]);
-    
+
     printf("\n\n");
-    
+
     insertion(v,10);
-    
+
     for(int i = 0; i < 10; i++)
         printf("%d ",v[i]);
-    
+
     return 0;
 }
 */

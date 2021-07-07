@@ -22,23 +22,23 @@ void selection(unsigned int vet[], int tam){
             if(vet[j] < vet[menor])
                 menor = j;
         swap_selection(vet, menor, i);
-    }   
+    }
 }
 
 /*
 int main(){
     unsigned int v[] = {3,67,31,90,1,44,654,89,21,20};
-    
+
     for(int i = 0; i < 10; i++)
         printf("%d ",v[i]);
-    
+
     printf("\n\n");
-    
+
     selection(v,10);
-    
+
     for(int i = 0; i < 10; i++)
         printf("%d ",v[i]);
-    
+
     return 0;
 }
 */

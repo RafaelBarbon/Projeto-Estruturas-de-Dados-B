@@ -27,7 +27,7 @@ selection_sort.o: selection_sort.c
 main_p.o: main_p.c
 	gcc -c main_p.c
 
-clean: 
+clean:
 	rm -rf *.o
 
 rmproper: clean
